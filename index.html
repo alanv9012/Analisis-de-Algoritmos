@@ -1,0 +1,135 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Analisis de Algoritmos</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+        <style type="text/css">
+
+
+        #maindiv {
+        margin-top: 30px;
+
+        }
+
+        #jumbo{
+        font-style: italic;
+        text-align: center;
+        margin-bottom: 40px;
+        }
+
+        #myForm{
+        margin-top: 30px;
+        }
+
+        .btncontrol{
+        padding: 20px 50px;
+        position: relative;
+        margin-left: 20px;
+        font-weight: bold;
+        font-size: 60px;  
+        }
+
+        .center_div{
+        margin: 30px auto;
+        width: 60% /* value of your choice which suits your alignment */
+        }
+
+        </style>
+        
+    </head>
+    
+    <body>
+
+        <div class="container" id="mainDiv">
+
+            <h1 id="jumbo">Calculador de Algortimos mejorado</h1>
+
+            <form id="myForm">
+               
+                <div class="form-group row center_div">
+
+                    <div class="col-sm-3">
+                        <button type="button" class="btn btn-dark btncontrol" id="thetaButton">&Theta;</button>
+                    </div>
+
+                    <div class="col-sm-3">
+                        <button type="button" class="btn btn-dark btncontrol" id="omegaButton">&Omega;</button>
+                    </div>
+
+                    <div class="col-sm-3">
+                        <button type="button" class="btn btn-dark btncontrol" id="bigOButton">&Omicron;</button>
+                    </div>
+                    
+                </div>
+
+
+                <div class="form-group row">
+                    <label for="xfunction" class="col-sm-2 col-form-label">Funcion f(x):</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" id="xfunction" aria-describedby="xfunction" placeholder="f(x)">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="gfunction" class="col-sm-2 col-form-label">Funcion g(x):</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" id="gfunction" aria-describedby="gfunction" placeholder="g(x)">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="c1function" class="col-sm-2 col-form-label">c1:</label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" id="c1function" aria-describedby="c1function" placeholder="c1">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="c2function" class="col-sm-2 col-form-label">c2:</label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" id="c2function" aria-describedby="c2function" placeholder="c2">
+                    </div>
+                </div>
+                
+                <div class="form-group row">
+                    <label for="n0function" class="col-sm-2 col-form-label">n0:</label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" id="n0function" aria-describedby="n0function" placeholder="n0">
+                    </div>
+                </div>
+
+            </form>
+        </div>
+        
+        <script type="text/javascript">
+            
+            var fx, gx, c1, c2, n0;
+            
+            function getData(){
+            
+                c1 = parseInt(document.getElementById("c1function").value);
+                c2 = parseInt(document.getElementById("c2function").value);
+                n0 = parseInt(document.getElementById("n0function").value);
+                
+                alert(c1);
+                alert(c2);
+                alert(n0);
+                
+            }
+            
+            document.getElementById("thetaButton").onclick = getData;
+            document.getElementById("omegaButton").onclick = getData;
+            document.getElementById("bigOButton").onclick = getData;
+            
+            
+            
+            
+                    
+        
+        
+        
+        </script>
+    </body>
+</html>

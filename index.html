@@ -4,37 +4,36 @@
         <title>Analisis de Algoritmos</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+        
         <style type="text/css">
 
+            #maindiv {
+            margin-top: 30px;
 
-        #maindiv {
-        margin-top: 30px;
+            }
 
-        }
+            #jumbo{
+            font-style: italic;
+            text-align: center;
+            margin-bottom: 40px;
+            }
 
-        #jumbo{
-        font-style: italic;
-        text-align: center;
-        margin-bottom: 40px;
-        }
+            #myForm{
+            margin-top: 30px;
+            }
 
-        #myForm{
-        margin-top: 30px;
-        }
+            .btncontrol{
+            padding: 20px 50px;
+            position: relative;
+            margin-left: 20px;
+            font-weight: bold;
+            font-size: 60px;  
+            }
 
-        .btncontrol{
-        padding: 20px 50px;
-        position: relative;
-        margin-left: 20px;
-        font-weight: bold;
-        font-size: 60px;  
-        }
-
-        .center_div{
-        margin: 30px auto;
-        width: 60% /* value of your choice which suits your alignment */
-        }
+            .center_div{
+            margin: 30px auto;
+            width: 60% /* value of your choice which suits your alignment */
+            }
 
         </style>
         
@@ -113,23 +112,129 @@
                 c2 = parseInt(document.getElementById("c2function").value);
                 n0 = parseInt(document.getElementById("n0function").value);
                 
-                alert(c1);
-                alert(c2);
-                alert(n0);
+                var xfunctionTokens = tokenize(document.getElementById("xfunction").value);
+                var gfunctionTokens = tokenize(document.getElementById("gfunction").value);
                 
+//                xfunctionTokens.forEach(function(token, index) {
+//                    console.log(index + "=> " + token.type + "(" + token.value + ")");
+//                });
+//                
+//                gfunctionTokens.forEach(function(token, index) {
+//                    console.log(index + "=> " + token.type + "(" + token.value + ")");
+//                });
+//                
+//                alert(c1);
+//                alert(c2);
+//                alert(n0);
+//                
+            }
+            
+            function Token(type, value){
+                this.type = type;
+                this.value = value;
+            }
+            
+            function isComma(ch) {
+                return (ch === ",");
+            }
+            
+            function isDigit(ch) {
+                return /\d/.test(ch);
+            }
+            
+            function isLetter(ch) {
+                return /[a-z]/i.test(ch);
+            }
+            
+            function isOperator(ch) {
+                return /\+|-|\*|\/|\^/.test(ch);
+            }
+            
+            function isLeftParenthesis(ch) {
+                return (ch === "(");
+            }
+            
+            function isRightParenthesis(ch) {
+                return (ch == ")");
+            }
+            
+            
+            
+            function tokenize(str) {
+                str.replace(/\s+/g, "");
+                str=str.split("");
+
+                var result=[];
+                var letterBuffer=[];
+                var numberBuffer=[];
+
+                str.forEach(function (char, idx) {
+                    if(isDigit(char)) {
+                        numberBuffer.push(char);
+                    } else if(char==".") {
+                        numberBuffer.push(char);
+                    } else if (isLetter(char)) {
+                        if(numberBuffer.length) {
+                            emptyNumberBufferAsLiteral();
+                            result.push(new Token("Operator", "*"));
+                        }
+                        letterBuffer.push(char);
+                    } else if (isOperator(char)) {
+                        emptyNumberBufferAsLiteral();
+                        emptyLetterBufferAsVariables();
+                        result.push(new Token("Operator", char));
+                    } else if (isLeftParenthesis(char)) {
+                        if(letterBuffer.length) {
+                            result.push(new Token("Function", letterBuffer.join("")));
+                            letterBuffer=[];
+                        } else if(numberBuffer.length) {
+                            emptyNumberBufferAsLiteral();
+                            result.push(new Token("Operator", "*"));
+                        }
+                        result.push(new Token("Left Parenthesis", char));
+                    } else if (isRightParenthesis(char)) {
+                        emptyLetterBufferAsVariables();
+                        emptyNumberBufferAsLiteral();
+                        result.push(new Token("Right Parenthesis", char));
+                    } else if (isComma(char)) {
+                        emptyNumberBufferAsLiteral();
+                        emptyLetterBufferAsVariables();
+                        result.push(new Token("Function Argument Separator", char));
+                    }
+                });
+                
+                if (numberBuffer.length) {
+                    emptyNumberBufferAsLiteral();
+                }
+                if(letterBuffer.length) {
+                    emptyLetterBufferAsVariables();
+                }
+                return result;
+            
+
+            function emptyLetterBufferAsVariables() {
+                var l = letterBuffer.length;
+                for (var i = 0; i < l; i++) {
+                    result.push(new Token("Variable", letterBuffer[i]));
+                    if(i< l-1) { //there are more Variables left
+                        result.push(new Token("Operator", "*"));
+                    }
+                }
+                letterBuffer = [];
+            }
+
+            function emptyNumberBufferAsLiteral() {
+                if(numberBuffer.length) {
+                    result.push(new Token("Literal", numberBuffer.join("")));
+                    numberBuffer=[];
+                }
+            }
             }
             
             document.getElementById("thetaButton").onclick = getData;
             document.getElementById("omegaButton").onclick = getData;
             document.getElementById("bigOButton").onclick = getData;
-            
-            
-            
-            
                     
-        
-        
-        
         </script>
     </body>
 </html>

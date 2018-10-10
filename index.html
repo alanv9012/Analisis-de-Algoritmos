@@ -118,7 +118,7 @@
         function isOmega() {
             readValues();
             
-            for (var i = n0; i < 100; i+= 0.01) {
+            for (var i = n0; i < n0 + 100; i+= 0.01) {
                 if (math.eval(fx, { x: i }) < math.eval("c * (" + gx + ")", { c: c1, x: i })) {
                     return false;
                 }
@@ -129,7 +129,7 @@
         function isBigO() {
             readValues();
 
-            for (var i = n0; i < 100; i += 0.01) {
+            for (var i = n0; i < n0 + 100; i += 0.01) {
                 if (math.eval(fx, { x: i }) > math.eval("c * (" + gx + ")", { c: c2, x: i })) {
                     return false;
                 }

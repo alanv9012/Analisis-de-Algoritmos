@@ -31,11 +31,11 @@
             .btncontrol{
             padding: 20px 50px;
             position: relative;
-            margin-left: 20px;
+            margin-left: 10px;
             font-weight: bold;
             font-size: 60px;
             text-align: center;
-                margin-bottom: 10px;
+            margin-bottom: 10px;
             }
 
             .center_div{
@@ -58,7 +58,7 @@
 
             <div class="jumbotron">
                 <h1 id="displayResult" class="display-4">Analisis de Funciones</h1>
-                <p class="lead">Ingrese las funcions a evaluar.</p>
+                <p class="lead">Ingrese las funciones a evaluar.</p>
                 <hr class="my-4">
                 <p>Despues seleccione el tipo de analisis que desea hacer.</p>
                 
@@ -148,10 +148,11 @@
         }
 
         function printIsBigO() {
-            if (isBigO())
+            if (isBigO()){
                 //alert("F(x) si es O(G(x)) c = " + c2 + " n0 = " + n0);
+                c2 = c2.toPrecision(4);
                 $("#displayResult").html("F(x) si es O(G(x)) con:  <br> c = " + c2 + "<br> n0 = " + n0);
-            else
+            } else
                 //alert("F(x) no es O(G(x))");
                 $("#displayResult").html("F(x) no es O(G(x))");
         }

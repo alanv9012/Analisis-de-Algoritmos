@@ -118,8 +118,8 @@
 
         function isOmegaGivenConstants(n0, c)
         {
-            for (var i = n0; i < n0 + 300; i+= 0.1) 
-                if (compiledFx.eval({ x: i }) < c * compiledGx.eval({ x: i })) 
+            for (var i = n0; i < n0 + 300; i += 0.1)
+                if (compiledFx.eval({ x: i }) < c * compiledGx.eval({ x: i }))
                     return false;
             return true;
         }
@@ -128,7 +128,7 @@
             readValues();
             
             for (n0 = 0; n0 < 100; n0++) 
-                for (c1 = 0.1; c1 < 30; c1+= 0.1) 
+                for (c1 = 0.01; c1 < 30; c1+= 0.01) 
                     if (isOmegaGivenConstants(n0, c1))
                         return true;
             return false;
@@ -145,7 +145,7 @@
             readValues();
 
             for (n0 = 0; n0 < 100; n0++) 
-                for (c2 = 0.1; c2 < 30; c2+= 0.1)
+                for (c2 = 0.01; c2 < 30; c2+= 0.01)
                     if (isBigOGivenConstants(n0, c2))
                         return true;
             return false;

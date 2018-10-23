@@ -1,0 +1,10 @@
+D:\TareasUACH\RedBlackTree\RedBlackTree\RedBlackTree\bin\Debug\RedBlackTree.exe
+D:\TareasUACH\RedBlackTree\RedBlackTree\RedBlackTree\bin\Debug\RedBlackTree.pdb
+D:\TareasUACH\RedBlackTree\RedBlackTree\RedBlackTree\bin\Debug\nunit.framework.dll
+D:\TareasUACH\RedBlackTree\RedBlackTree\RedBlackTree\bin\Debug\nunit.framework.pdb
+D:\TareasUACH\RedBlackTree\RedBlackTree\RedBlackTree\bin\Debug\nunit.framework.xml
+D:\TareasUACH\RedBlackTree\RedBlackTree\RedBlackTree\obj\Debug\RedBlackTree.csprojAssemblyReference.cache
+D:\TareasUACH\RedBlackTree\RedBlackTree\RedBlackTree\obj\Debug\RedBlackTree.csproj.CoreCompileInputs.cache
+D:\TareasUACH\RedBlackTree\RedBlackTree\RedBlackTree\obj\Debug\RedBlackTree.csproj.CopyComplete
+D:\TareasUACH\RedBlackTree\RedBlackTree\RedBlackTree\obj\Debug\RedBlackTree.exe
+D:\TareasUACH\RedBlackTree\RedBlackTree\RedBlackTree\obj\Debug\RedBlackTree.pdb

@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/RedBlackTree/Program.cs" line="107" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="705110e7-f6e2-4b0a-97f6-193aae777052" name="Default" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="Program.cs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/RedBlackTree/Program.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="322">
+              <caret line="42" column="42" selection-start-line="42" selection-start-column="42" selection-end-line="42" selection-end-column="42" />
+              <folding>
+                <marker date="1540273191288" expanded="true" signature="6:47" ph="..." />
+                <marker date="1540273191288" expanded="true" signature="71:6216" ph="{...}" />
+                <marker date="1540273191288" expanded="true" signature="95:134" ph="{...}" />
+                <marker date="1540273191288" expanded="true" signature="157:2869" ph="{...}" />
+                <marker date="1540273191288" expanded="true" signature="322:421" ph="{...}" />
+                <marker date="1540273191288" expanded="true" signature="503:633" ph="{...}" />
+                <marker date="1540273191288" expanded="true" signature="678:752" ph="{...}" />
+                <marker date="1540273191288" expanded="true" signature="789:1140" ph="{...}" />
+                <marker date="1540273191288" expanded="true" signature="880:997" ph="{...}" />
+                <marker date="1540273191288" expanded="true" signature="1027:1130" ph="{...}" />
+                <marker date="1540273191288" expanded="true" signature="1179:1489" ph="{...}" />
+                <marker date="1540273191288" expanded="true" signature="1558:2089" ph="{...}" />
+                <marker date="1540273191288" expanded="true" signature="2133:2618" ph="{...}" />
+                <marker date="1540273191288" expanded="true" signature="2179:2399" ph="{...}" />
+                <marker date="1540273191288" expanded="true" signature="2678:2863" ph="{...}" />
+                <marker date="1540273191288" expanded="true" signature="2918:5271" ph="{...}" />
+                <marker date="1540273191288" expanded="true" signature="3129:3460" ph="{...}" />
+                <marker date="1540273191288" expanded="true" signature="3324:3425" ph="{...}" />
+                <marker date="1540273191288" expanded="false" signature="3539:4121" ph="{...}" />
+                <marker date="1540273191288" expanded="true" signature="3611:3691" ph="{...}" />
+                <marker date="1540273191288" expanded="true" signature="3737:4082" ph="{...}" />
+                <marker date="1540273191288" expanded="true" signature="3901:4068" ph="{...}" />
+                <marker date="1540273191288" expanded="true" signature="3954:4050" ph="{...}" />
+                <marker date="1540273191288" expanded="true" signature="4189:4452" ph="{...}" />
+                <marker date="1540273191288" expanded="true" signature="4536:4750" ph="{...}" />
+                <marker date="1540273191288" expanded="true" signature="4846:5265" ph="{...}" />
+                <marker date="1540273191288" expanded="true" signature="4900:5037" ph="{...}" />
+                <marker date="1540273191288" expanded="true" signature="5307:6214" ph="{...}" />
+                <marker date="1540273191288" expanded="true" signature="5360:6208" ph="{...}" />
+                <marker date="1540273191288" expanded="true" signature="6000:6122" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="NodeTests.cs" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/RedBlackTree/NodeTests.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="283">
+              <caret line="136" lean-forward="true" selection-start-line="136" selection-end-line="136" />
+              <folding>
+                <marker date="1540273301260" expanded="true" signature="6:76" ph="..." />
+                <marker date="1540273301260" expanded="true" signature="107:3534" ph="{...}" />
+                <marker date="1540273301260" expanded="true" signature="159:378" ph="{...}" />
+                <marker date="1540273301260" expanded="true" signature="433:678" ph="{...}" />
+                <marker date="1540273301260" expanded="true" signature="733:850" ph="{...}" />
+                <marker date="1540273301260" expanded="true" signature="905:1148" ph="{...}" />
+                <marker date="1540273301260" expanded="true" signature="1213:1447" ph="{...}" />
+                <marker date="1540273301260" expanded="true" signature="1512:1748" ph="{...}" />
+                <marker date="1540273301260" expanded="true" signature="1813:2125" ph="{...}" />
+                <marker date="1540273301260" expanded="true" signature="2190:2440" ph="{...}" />
+                <marker date="1540273301260" expanded="true" signature="2515:2724" ph="{...}" />
+                <marker date="1540273301260" expanded="true" signature="2795:3105" ph="{...}" />
+                <marker date="1540273301260" expanded="true" signature="3177:3532" ph="{...}" />
+                <marker date="1540273301260" expanded="true" signature="3587:4651" ph="{...}" />
+                <marker date="1540273301260" expanded="true" signature="3631:4010" ph="{...}" />
+                <marker date="1540273301260" expanded="true" signature="4068:4371" ph="{...}" />
+                <marker date="1540273301260" expanded="true" signature="4424:4649" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>base.ToString()</find>
+    </findStrings>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/RedBlackTree/NodeTests.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/RedBlackTree/Program.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/RedBlackTree/Program.cs" />
+        <option value="$PROJECT_DIR$/RedBlackTree/NodeTests.cs" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths />
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-10" />
+    <option name="y" value="-10" />
+    <option name="width" value="1940" />
+    <option name="height" value="1050" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="SolutionExplorer" proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="SolutionExplorer">
+        <subPane>
+          <expand>
+            <path>
+              <item name="" type="13324e5d:SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
+              <item name="RedBlackTree (1 project)" type="977d5f41:SolutionExplorerNodeRider" />
+            </path>
+            <path>
+              <item name="" type="13324e5d:SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
+              <item name="RedBlackTree (1 project)" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="RedBlackTree" type="977d5f41:SolutionExplorerNodeRider" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+        <option name="show-file-system" value="false" />
+        <option name="show-all-items" value="false" />
+      </pane>
+      <pane id="Scratches" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Rider.ProjectViewActivator.IsNotFirstRun" value="true" />
+    <property name="SearchEverywhereHistoryKey" value="node&#9;null&#9;null&#10;redblacktr&#9;null&#9;null" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected=".NET Project.Default">
+    <configuration name="Default" type="DotNetProject" factoryName=".NET Project">
+      <option name="EXE_PATH" value="$PROJECT_DIR$/RedBlackTree/bin/Debug/RedBlackTree.exe" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/RedBlackTree/bin/Debug" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="PROJECT_PATH" value="$PROJECT_DIR$/RedBlackTree/RedBlackTree.csproj" />
+      <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
+      <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
+      <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
+      <option name="PROJECT_KIND" value="Console" />
+      <option name="PROJECT_TFM" value=".NETFramework,Version=v4.6.2" />
+    </configuration>
+    <list>
+      <item itemvalue=".NET Project.Default" />
+    </list>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="705110e7-f6e2-4b0a-97f6-193aae777052" name="Default" comment="" />
+      <created>1540254556944</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1540254556944</updated>
+      <workItem from="1540254559889" duration="17877000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="17877000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1552" height="840" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="Errors In Solution" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info active="true" anchor="bottom" x="1920" y="23" width="1536" height="801" id="Unit Tests" type="WINDOWED" visible="true" weight="0.3288889" />
+      <window_info anchor="bottom" id="Version Control" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3288889" />
+      <window_info anchor="bottom" id="Terminal" weight="0.3288889" />
+      <window_info anchor="bottom" id="NuGet" weight="0.5585185" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24966262" />
+      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Build" weight="0.3288889" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="10" />
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/RedBlackTree/Program.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="42" column="42" selection-start-line="42" selection-start-column="42" selection-end-line="42" selection-end-column="42" />
+          <folding>
+            <marker date="1540273191288" expanded="true" signature="6:47" ph="..." />
+            <marker date="1540273191288" expanded="true" signature="71:6216" ph="{...}" />
+            <marker date="1540273191288" expanded="true" signature="95:134" ph="{...}" />
+            <marker date="1540273191288" expanded="true" signature="157:2869" ph="{...}" />
+            <marker date="1540273191288" expanded="true" signature="322:421" ph="{...}" />
+            <marker date="1540273191288" expanded="true" signature="503:633" ph="{...}" />
+            <marker date="1540273191288" expanded="true" signature="678:752" ph="{...}" />
+            <marker date="1540273191288" expanded="true" signature="789:1140" ph="{...}" />
+            <marker date="1540273191288" expanded="true" signature="880:997" ph="{...}" />
+            <marker date="1540273191288" expanded="true" signature="1027:1130" ph="{...}" />
+            <marker date="1540273191288" expanded="true" signature="1179:1489" ph="{...}" />
+            <marker date="1540273191288" expanded="true" signature="1558:2089" ph="{...}" />
+            <marker date="1540273191288" expanded="true" signature="2133:2618" ph="{...}" />
+            <marker date="1540273191288" expanded="true" signature="2179:2399" ph="{...}" />
+            <marker date="1540273191288" expanded="true" signature="2678:2863" ph="{...}" />
+            <marker date="1540273191288" expanded="true" signature="2918:5271" ph="{...}" />
+            <marker date="1540273191288" expanded="true" signature="3129:3460" ph="{...}" />
+            <marker date="1540273191288" expanded="true" signature="3324:3425" ph="{...}" />
+            <marker date="1540273191288" expanded="false" signature="3539:4121" ph="{...}" />
+            <marker date="1540273191288" expanded="true" signature="3611:3691" ph="{...}" />
+            <marker date="1540273191288" expanded="true" signature="3737:4082" ph="{...}" />
+            <marker date="1540273191288" expanded="true" signature="3901:4068" ph="{...}" />
+            <marker date="1540273191288" expanded="true" signature="3954:4050" ph="{...}" />
+            <marker date="1540273191288" expanded="true" signature="4189:4452" ph="{...}" />
+            <marker date="1540273191288" expanded="true" signature="4536:4750" ph="{...}" />
+            <marker date="1540273191288" expanded="true" signature="4846:5265" ph="{...}" />
+            <marker date="1540273191288" expanded="true" signature="4900:5037" ph="{...}" />
+            <marker date="1540273191288" expanded="true" signature="5307:6214" ph="{...}" />
+            <marker date="1540273191288" expanded="true" signature="5360:6208" ph="{...}" />
+            <marker date="1540273191288" expanded="true" signature="6000:6122" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RedBlackTree/NodeTests.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="283">
+          <caret line="136" lean-forward="true" selection-start-line="136" selection-end-line="136" />
+          <folding>
+            <marker date="1540273301260" expanded="true" signature="6:76" ph="..." />
+            <marker date="1540273301260" expanded="true" signature="107:3534" ph="{...}" />
+            <marker date="1540273301260" expanded="true" signature="159:378" ph="{...}" />
+            <marker date="1540273301260" expanded="true" signature="433:678" ph="{...}" />
+            <marker date="1540273301260" expanded="true" signature="733:850" ph="{...}" />
+            <marker date="1540273301260" expanded="true" signature="905:1148" ph="{...}" />
+            <marker date="1540273301260" expanded="true" signature="1213:1447" ph="{...}" />
+            <marker date="1540273301260" expanded="true" signature="1512:1748" ph="{...}" />
+            <marker date="1540273301260" expanded="true" signature="1813:2125" ph="{...}" />
+            <marker date="1540273301260" expanded="true" signature="2190:2440" ph="{...}" />
+            <marker date="1540273301260" expanded="true" signature="2515:2724" ph="{...}" />
+            <marker date="1540273301260" expanded="true" signature="2795:3105" ph="{...}" />
+            <marker date="1540273301260" expanded="true" signature="3177:3532" ph="{...}" />
+            <marker date="1540273301260" expanded="true" signature="3587:4651" ph="{...}" />
+            <marker date="1540273301260" expanded="true" signature="3631:4010" ph="{...}" />
+            <marker date="1540273301260" expanded="true" signature="4068:4371" ph="{...}" />
+            <marker date="1540273301260" expanded="true" signature="4424:4649" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

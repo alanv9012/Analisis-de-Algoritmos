@@ -124,7 +124,7 @@ public class RedBlackTreeBuilderTests
         var right = new Node(0, Color.Black, new Node(0, Color.Black), new Node(0, Color.Red, new Node(0, Color.Black), new Node(0, Color.Black)));
         var node = new Node(0, Color.Black, left, right);
 
-        Assert.IsTrue(RedBlackTreeBuilder.CanBeColored(node));
+        Assert.IsTrue(RedBlackTreeBuilder.CanBeColoredWithHeight(node));
     }
     
     
@@ -135,7 +135,7 @@ public class RedBlackTreeBuilderTests
         var right = new Node(0, Color.Black, new Node(0, Color.Black));
         var node = new Node(0, Color.Black, left, right);
 
-        Assert.IsTrue(RedBlackTreeBuilder.CanBeColored(node));
+        Assert.IsTrue(RedBlackTreeBuilder.CanBeColoredWithHeight(node));
     }
     
     [Test]
@@ -145,6 +145,6 @@ public class RedBlackTreeBuilderTests
         var right = new Node(0, Color.Black);
         var node = new Node(0, Color.Black, left, right);
 
-        Assert.IsTrue(RedBlackTreeBuilder.CanBeColored(node));
+        Assert.IsTrue(RedBlackTreeBuilder.CanBeColoredWithHeight(node));
     }
 }

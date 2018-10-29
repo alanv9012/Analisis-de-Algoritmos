@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="D:\Resharper Cache\_RedBlackTree.664175097.00" t="ExcludeRecursive" />
-    <e p="D:\TareasUACH\RedBlackTree\RedBlackTree" t="IncludeFlat">
+    <e p="C:\Users\GrecoFlores\.Rider2018.2\system\extResources" t="IncludeRecursive" />
+    <e p="D:\Resharper Cache\_RedBlackTree.-423514090.RD.00" t="ExcludeRecursive" />
+    <e p="D:\TareasUACH\AnalisisAlgoritmos\GitHubAnalisisAlgoritmos\RedBlackTree\RedBlackTree" t="IncludeFlat">
       <e p="packages" t="ExcludeRecursive" />
       <e p="RedBlackTree" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />

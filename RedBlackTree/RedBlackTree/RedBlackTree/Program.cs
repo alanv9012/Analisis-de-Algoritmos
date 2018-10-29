@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace RedBlackTree
 {
@@ -37,17 +38,14 @@ namespace RedBlackTree
         
         public void Print()
         {
-            Console.WriteLine(Value + " " + Color);
-            if(Left != null)
-            {
-                Console.WriteLine("Left");
-                Left.Print();                
-            }
-            if(Right != null)
-            {
-                Console.WriteLine("Right");
-                Right.Print();
-            }
+            Console.Write(Value + " " + Color);
+            if (Left != null)
+                Console.Write(" Left " + Left.Value + " ");
+            if (Right != null)
+                Console.Write(" Right " + Right.Value + " ");
+            Console.WriteLine();
+            Left?.Print();
+            Right?.Print();
         }
         
         public bool IsValid()
@@ -102,11 +100,11 @@ namespace RedBlackTree
     public static class RedBlackTreeBuilder
     {
         private static List<int> _elements;
-        private static Node _root;
-        private static bool _wasSolutionFound;
+        private static int _targetBlackHeight;
         
         public static Node Build(List<int> elements, int blackHeight)
         {
+            _targetBlackHeight = blackHeight;
             _elements = elements;    
             _elements.Sort();
             
@@ -114,7 +112,7 @@ namespace RedBlackTree
 
             foreach (var tree in trees)
             {
-                if(CanBeColored(tree)) 
+                if(CanBeColoredWithHeight(tree)) 
                     return tree;
             }
             return null;
@@ -140,14 +138,11 @@ namespace RedBlackTree
             return result;
         }
                 
-        public static bool CanBeColored(Node root)
+        public static bool CanBeColoredWithHeight(Node root)
         {
-            _root = root;
-            _wasSolutionFound = false;
             var treeAsList = new List<Node>();
             GetTreeAsNodeList(root, treeAsList);
-            CanBeColoredHelper(treeAsList);
-            return _wasSolutionFound;
+            return CanBeColoredHelper(treeAsList);
         }
         
         private static void GetTreeAsNodeList(Node node, List<Node> nodes)
@@ -160,44 +155,68 @@ namespace RedBlackTree
             GetTreeAsNodeList(node.Right, nodes);
         }
         
-        private static void CanBeColoredHelper(List<Node> nodes, int currentIndex = 0)
+        private static bool CanBeColoredHelper(List<Node> nodes, int currentIndex = 0)
         {
-            if(currentIndex == nodes.Count)
+            if (currentIndex == nodes.Count)
             {
-                if(nodes[0].IsValid())
-                    _wasSolutionFound = true;
-                return;
+                if (nodes[0].IsValid() && _targetBlackHeight == nodes[0].GetBlackHeight())
+                    return true;
+                return false;
             }
+
             nodes[currentIndex].Color = Color.Black;
-            CanBeColoredHelper(nodes, currentIndex + 1);
+            if (CanBeColoredHelper(nodes, currentIndex + 1))
+                return true;
+            if (currentIndex == 0) // Root must be black
+                return false;
             nodes[currentIndex].Color = Color.Red;
-            CanBeColoredHelper(nodes, currentIndex + 1);
+            if (CanBeColoredHelper(nodes, currentIndex + 1))
+                return true;
+            return false;
         }
     }
         
     internal class Program
     {
+        private static readonly List<int> _elements = new List<int>();
+        
         public static void Main(string[] args)
         {
             Console.WriteLine("Introducir la cantidad de elementos");
             var amountOfElements = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Introducir los elementos");
-            var elements = new List<int>();
             for (var i = 0; i < amountOfElements; i++)
-                elements.Add(Convert.ToInt32(Console.ReadLine()));
+                _elements.Add(Convert.ToInt32(Console.ReadLine()));
             Console.WriteLine("Introducir altura black del arbol");
             var blackHeight = Convert.ToInt32(Console.ReadLine());
             
-            var root = RedBlackTreeBuilder.Build(elements, blackHeight);
-            
-            if(root == null)
+            var root = RedBlackTreeBuilder.Build(_elements, blackHeight);
+            if (root != null)
             {
-                Console.WriteLine("No hay solucion");
-                return;                
+                Console.WriteLine("La solucion es");
+                root.Print();
+                return;
             }
 
-            Console.WriteLine("La solucion es");
-            root.Print();
+            Console.WriteLine("No tiene solucion para black height = " + blackHeight);
+            if(SearchForSolutionWithBlackHeightRange(1, blackHeight - 1))
+                return;
+            SearchForSolutionWithBlackHeightRange(blackHeight + 1, 100);
+        }
+        
+        private static bool SearchForSolutionWithBlackHeightRange(int lower, int upper)
+        {
+            for (int i = upper; i > lower; i--)
+            {
+                var root = RedBlackTreeBuilder.Build(_elements, i);
+                if (root != null)
+                {
+                    Console.WriteLine("Se encontro solucion para black height = " + i);
+                    root.Print();
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }

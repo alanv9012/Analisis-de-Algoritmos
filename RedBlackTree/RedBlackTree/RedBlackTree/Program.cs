@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text.RegularExpressions;
 
 namespace RedBlackTree
 {
@@ -195,27 +194,42 @@ namespace RedBlackTree
             {
                 Console.WriteLine("La solucion es");
                 root.Print();
+                Console.Read();
                 return;
             }
 
             Console.WriteLine("No tiene solucion para black height = " + blackHeight);
-            if(SearchForSolutionWithBlackHeightRange(1, blackHeight - 1))
-                return;
-            SearchForSolutionWithBlackHeightRange(blackHeight + 1, 100);
+            SearchForSolutionClosestToBlackHeight(blackHeight);
         }
         
-        private static bool SearchForSolutionWithBlackHeightRange(int lower, int upper)
+        private static void SearchForSolutionClosestToBlackHeight(int blackHeight)
         {
-            for (int i = upper; i > lower; i--)
+            int lower = blackHeight -1, upper = blackHeight + 1;
+            while(true)
             {
-                var root = RedBlackTreeBuilder.Build(_elements, i);
-                if (root != null)
-                {
-                    Console.WriteLine("Se encontro solucion para black height = " + i);
-                    root.Print();
-                    return true;
-                }
+                var root = RedBlackTreeBuilder.Build(_elements, lower);
+                if (PrintIfNotNull(root, lower))
+                    return;
+                
+                root = RedBlackTreeBuilder.Build(_elements, upper);
+                if (PrintIfNotNull(root, upper))
+                    return;
+                
+                lower--;
+                upper++;
             }
+        }
+
+        private static bool PrintIfNotNull(Node root, int blackHeightFound)
+        {
+            if (root != null)
+            {
+                Console.WriteLine("Se encontro solucion para black height = " + blackHeightFound);
+                root.Print();
+                Console.Read();
+                return true;
+            }
+
             return false;
         }
     }

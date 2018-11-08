@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace RedBlackTree
 {
@@ -11,30 +13,42 @@ namespace RedBlackTree
 
     public class Node
     {
-        public readonly int Value;
-        public Color Color;
-        public Node Left, Right;
+        public int Value;
+        public readonly int NodeCount;
+        public readonly Color Color;
+        public readonly int BlackHeight;
+        public readonly Node Left, Right;
         
-        public Node(int value, Node left, Node right)
+        public Node(Color color, Node left = null, Node right = null)
         {
-            Value = value;
-            Left = left;
-            Right = right;
-        }
-
-        public Node(int value, Color color, Node left = null, Node right = null)
-        {
-            Value = value;
+            if(color == Color.Red)
+            {
+                if(left != null && left.Color == Color.Red)
+                    throw new ArgumentException(nameof(left));
+                if(right != null && right.Color == Color.Red)
+                    throw new ArgumentException(nameof(right));
+            } 
+            if(GetBlackHeightOfNode(left) != GetBlackHeightOfNode(right))
+                throw new InvalidOperationException("Height of subtrees does not match");
+            BlackHeight = GetBlackHeightOfNode(left);
+            if(color == Color.Black)
+                BlackHeight++;
+            NodeCount = GetChildCountOfNode(left) + GetChildCountOfNode(right) + 1;
             Left = left;
             Right = right;
             Color = color;    
         }
         
-        public int GetBlackHeight()
+        private int GetBlackHeightOfNode(Node node)
         {
-            return GetBlackHeightFromChildNode(Left);
+            return node == null ? 1 : node.BlackHeight;
         }
         
+        private int GetChildCountOfNode(Node node)
+        {
+            return node == null ? 0 : node.NodeCount;
+        }
+                
         public void Print()
         {
             Console.Write(Value + " " + Color);
@@ -46,135 +60,177 @@ namespace RedBlackTree
             Left?.Print();
             Right?.Print();
         }
+
+        public Node Untangle()
+        {
+            Node untangledLeft = null, untangledRight = null;
+            if(Left != null)
+                untangledLeft = Left.Untangle();        
+            if(Right != null)
+                untangledRight = Right.Untangle();
+            return new Node(Color, untangledLeft, untangledRight);
+        }
         
-        public bool IsValid()
+        public void FillWithValues(List<int> values)
         {
-            if(Color != Color.Black)
-                return false;
-            if(!AreChildColorsValid())
-                return false;
-            var blackHeight = GetBlackHeight();
-            if(!AreHeightsCorrect(blackHeight, 0))
-                return false;
-            return true;
+            var middle = GetChildCountOfNode(Left);
+            Value = values[middle];
+            Left?.FillWithValues(values, 0,  middle - 1);
+            Right?.FillWithValues(values, middle + 1, values.Count);
         }
-
-        private bool AreHeightsCorrect(int expected, int heightSum)
+        
+        private void FillWithValues(List<int> values, int from, int to)
         {
-            if (Left != null && !Left.AreHeightsCorrect(expected, Left.Color == Color.Black ? heightSum + 1 : heightSum))
-                return false;
-            if (Left == null && expected != heightSum + 1)
-                return false;
-            if (Right != null && !Right.AreHeightsCorrect(expected, Right.Color == Color.Black ? heightSum + 1 : heightSum))
-                return false;
-            if (Right == null && expected != heightSum + 1)
-                return false;
-            return true;
-        }
-
-        private bool AreChildColorsValid()
-        {
-            if (Color == Color.Red)
-            {
-                if (Left != null && Left.Color == Color.Red)
-                    return false;
-                if (Right != null && Right.Color == Color.Red)
-                    return false;
-            }
-            if (Left != null && !Left.AreChildColorsValid())
-                return false;
-            if (Right != null && !Right.AreChildColorsValid())
-                return false;
-            return true;
-        }
-
-        private int GetBlackHeightFromChildNode(Node node)
-        {            
-            if(node != null)
-                return node.Color == Color.Black ? node.GetBlackHeight() + 1 : node.GetBlackHeight();
-            return 1;
+            var middle = from + GetChildCountOfNode(Left);
+            Value = values[middle];
+            Left?.FillWithValues(values, from, middle - 1);
+            Right?.FillWithValues(values, middle + 1, to);
         }
     }
     
     public static class RedBlackTreeBuilder
     {
-        private static List<int> _elements;
-        private static int _targetBlackHeight;
-        
-        public static Node Build(List<int> elements, int blackHeight)
+        public class TreeCache
         {
-            _targetBlackHeight = blackHeight;
-            _elements = elements;    
-            _elements.Sort();
-            
-            var trees = GenerateTrees(0, _elements.Count - 1);
-
-            foreach (var tree in trees)
+            public class NodeCountToTrees : IEnumerable<Node>
             {
-                if(CanBeColoredWithHeight(tree)) 
-                    return tree;
-            }
-            return null;
-        }
-         
-        public static List<Node> GenerateTrees(int lower, int upper){
-            var result = new List<Node>();
-            if(lower>upper){
-                result.Add(null);
-                return result;
-            }
- 
-            for(var i=lower; i<=upper; i++){
-                var leftSide = GenerateTrees(lower, i-1);
-                var rightSide = GenerateTrees(i+1, upper);
-                foreach(var left in leftSide){
-                    foreach(var right in rightSide){
-                        result.Add(new Node(_elements[i], left, right));
+                private class BlackHeightComparer : IComparer<Node>
+                {
+                    /// <inheritdoc />
+                    public int Compare(Node x, Node y)
+                    {
+                        return x.BlackHeight.CompareTo(y.BlackHeight);
                     }
                 }
-            }
- 
-            return result;
-        }
+
+                private readonly SortedSet<Node> Trees = new SortedSet<Node>(new BlackHeightComparer());
                 
-        public static bool CanBeColoredWithHeight(Node root)
-        {
-            var treeAsList = new List<Node>();
-            GetTreeAsNodeList(root, treeAsList);
-            return CanBeColoredHelper(treeAsList);
-        }
-        
-        private static void GetTreeAsNodeList(Node node, List<Node> nodes)
-        {
-            if(node == null)
-                return;
-            nodes.Add(node);
-            
-            GetTreeAsNodeList(node.Left, nodes);
-            GetTreeAsNodeList(node.Right, nodes);
-        }
-        
-        private static bool CanBeColoredHelper(List<Node> nodes, int currentIndex = 0)
-        {
-            if (currentIndex == nodes.Count)
-            {
-                if (nodes[0].IsValid() && _targetBlackHeight == nodes[0].GetBlackHeight())
-                    return true;
-                return false;
+                public void TryAddTree(Node tree)
+                {
+                    if (tree == null || !Trees.Contains(tree))
+                        Trees.Add(tree);
+                }
+                
+                public Node GetTreeClosestToBlackHeight(int blackHeight)
+                {
+                    Node closestMatch = null;
+                    int closestMatchDifference = int.MaxValue;
+                    foreach (var tree in Trees)
+                    {
+                        var heightDifference = Math.Abs(tree.BlackHeight - blackHeight);
+                        if(heightDifference < closestMatchDifference)
+                        {
+                            closestMatchDifference = heightDifference;
+                            closestMatch = tree;
+                        }
+                    }
+                    return closestMatch;
+                }
+                
+                /// <inheritdoc />
+                public IEnumerator<Node> GetEnumerator()
+                {
+                    foreach (var tree in Trees)
+                    {
+                        yield return tree;
+                    }
+                }
+
+                /// <inheritdoc />
+                IEnumerator IEnumerable.GetEnumerator()
+                {
+                    return GetEnumerator();
+                }
             }
 
-            nodes[currentIndex].Color = Color.Black;
-            if (CanBeColoredHelper(nodes, currentIndex + 1))
-                return true;
-            if (currentIndex == 0) // Root must be black
-                return false;
-            nodes[currentIndex].Color = Color.Red;
-            if (CanBeColoredHelper(nodes, currentIndex + 1))
-                return true;
-            return false;
+            public readonly List<NodeCountToTrees> TreesWithRedRoot = new List<NodeCountToTrees>();
+            public readonly List<NodeCountToTrees> TreesWithBlackRoot = new List<NodeCountToTrees>();
+
+            public TreeCache(int amountOfNodes)
+            {
+                for (int i = 0; i <= amountOfNodes; i++)
+                {
+                    TreesWithBlackRoot.Add(BuildTreesWithGivenNodeCount(Color.Black, i));
+                    TreesWithRedRoot.Add(BuildTreesWithGivenNodeCount(Color.Red, i));
+                }
+                
+                NodeCountToTrees BuildTreesWithGivenNodeCount(Color rootColor, int nodeCount)
+                {
+                    if(nodeCount == 0)
+                    {
+                        if (rootColor == Color.Black)
+                        {
+                            var nullBaseCase = new NodeCountToTrees();
+                            nullBaseCase.TryAddTree(null);
+                            return nullBaseCase;
+                        }
+                        return new NodeCountToTrees();
+                    }
+                    var trees = new NodeCountToTrees();
+                    if (rootColor == Color.Black)
+                        BuildTreesWithGivenNodeCountFromSubTrees(EnumerateTreesWithNodeCount);
+                    else
+                        BuildTreesWithGivenNodeCountFromSubTrees(x => TreesWithBlackRoot[x]);
+                    return trees;
+
+                    void BuildTreesWithGivenNodeCountFromSubTrees(Func<int, IEnumerable<Node>> getSubtreesWithNodeCount)
+                    {
+                        for (int i = 0; i < (nodeCount + 1) / 2; i++)
+                        {
+                            var leftSubtreeNodeCount = i;
+                            var rightSubtreeNodeCount = nodeCount - 1 - leftSubtreeNodeCount;
+                            foreach (var leftTree in getSubtreesWithNodeCount(leftSubtreeNodeCount))
+                            {
+                                foreach (var rightTree in getSubtreesWithNodeCount(rightSubtreeNodeCount))
+                                {
+                                    if (GetBlackHeight(leftTree) == GetBlackHeight(rightTree))
+                                        trees.TryAddTree(new Node(rootColor, leftTree, rightTree));
+                                }
+                            }
+                        }
+                    }
+                }
+                
+                int GetBlackHeight(Node node)
+                {
+                    return node == null ? 1 : node.BlackHeight;
+                }
+            }
+            
+            private IEnumerable<Node> EnumerateTreesWithNodeCount(int nodeCount)
+            {
+                foreach (var tree in TreesWithBlackRoot[nodeCount])
+                {
+                    yield return tree;
+                }
+                foreach (var tree in TreesWithRedRoot[nodeCount])
+                {
+                    yield return tree;
+                }
+            }
+            
+            public Node GetTreeClosestToBlackHeight(int nodeCount, int blackHeight)
+            {
+                var targetTree = TreesWithBlackRoot[nodeCount].GetTreeClosestToBlackHeight(blackHeight);
+                return targetTree.Untangle();
+            }
+        }
+        
+        private static List<int> _elements;
+        private static TreeCache _cache;
+        
+        public static Node FindTreeClosestToBlackHeight(List<int> elements, int blackHeight)
+        {
+            _elements = elements;    
+            _elements.Sort();
+            _cache = new TreeCache(elements.Count);
+            
+            var tree = _cache.GetTreeClosestToBlackHeight(elements.Count, blackHeight);
+            tree.FillWithValues(elements);
+            return tree;
         }
     }
-        
+    
     internal class Program
     {
         private static readonly List<int> _elements = new List<int>();
@@ -184,53 +240,23 @@ namespace RedBlackTree
             Console.WriteLine("Introducir la cantidad de elementos");
             var amountOfElements = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Introducir los elementos");
+            var elementsAsString = Console.ReadLine().Split(' ');
             for (var i = 0; i < amountOfElements; i++)
-                _elements.Add(Convert.ToInt32(Console.ReadLine()));
+                _elements.Add(Convert.ToInt32(elementsAsString[i]));
             Console.WriteLine("Introducir altura black del arbol");
             var blackHeight = Convert.ToInt32(Console.ReadLine());
             
-            var root = RedBlackTreeBuilder.Build(_elements, blackHeight);
+            var root = RedBlackTreeBuilder.FindTreeClosestToBlackHeight(_elements, blackHeight + 1);
             if (root != null)
             {
+                if(root.BlackHeight != blackHeight + 1)
+                    Console.WriteLine($"No se encontro una solucion con black height = {blackHeight} pero se encontro para black height = {root.BlackHeight-1}");
                 Console.WriteLine("La solucion es");
                 root.Print();
-                Console.Read();
-                return;
             }
-
-            Console.WriteLine("No tiene solucion para black height = " + blackHeight);
-            SearchForSolutionClosestToBlackHeight(blackHeight);
-        }
-        
-        private static void SearchForSolutionClosestToBlackHeight(int blackHeight)
-        {
-            int lower = blackHeight -1, upper = blackHeight + 1;
-            while(true)
-            {
-                var root = RedBlackTreeBuilder.Build(_elements, lower);
-                if (PrintIfNotNull(root, lower))
-                    return;
-                
-                root = RedBlackTreeBuilder.Build(_elements, upper);
-                if (PrintIfNotNull(root, upper))
-                    return;
-                
-                lower--;
-                upper++;
-            }
-        }
-
-        private static bool PrintIfNotNull(Node root, int blackHeightFound)
-        {
-            if (root != null)
-            {
-                Console.WriteLine("Se encontro solucion para black height = " + blackHeightFound);
-                root.Print();
-                Console.Read();
-                return true;
-            }
-
-            return false;
+            else
+                Console.WriteLine($"No tiene solucion para black height = {blackHeight}");
+            Console.Read();
         }
     }
 }
